@@ -13,14 +13,7 @@ let ytetto = 510;
 let xnuvola = 50;
 let ynuvola = 50;
 
-// coordinate del sole
-let xSole = 320;
-let ySole = 100;
-let raggiSole = 50;
-let angoloSole = 0; // rotazione raggi
 
-let tempo = 0;
-let scalaDibase = 0.5;
 
 
 
@@ -42,38 +35,7 @@ function draw() {
 
   //aprire contesto di disegno
 
- // sole
-  push();
-  translate(xSole, ySole); // sposta l'origine al centro del sole
-  noStroke();
-  fill("#ffea00"); // giallo sole
-  ellipse(0, 0, 90, 90); // disegna il cerchio al centro
-
-  // raggi del sole rotanti e sclalanti
-
-  
-  
-  
-  stroke("#ffa200ff");
-  strokeWeight(5);
-  rotate(angoloSole); // ruota il sistema di coordinate
-  scale(scalaDibase); // ingrandisce i raggi
-  tempo += 1; // velocità pulsazione
-  scalaDibase = 1.5 + sin(tempo) * 0.5; // scala che varia nel tempo
-  // disegna i raggi
-  for (let i = 0; i < 12; i++) {
-    let angle = 360 / 12 * i;
-    let x1 = cos(angle) * raggiSole;
-    let y1 = sin(angle) * raggiSole;
-    let x2 = cos(angle) * (raggiSole + 35);
-    let y2 = sin(angle) * (raggiSole + 35);
-    line(x1, y1, x2, y2);
-  }
-  pop();
-
-  // aggiorna rotazione
-  angoloSole += 1;
-  if (angoloSole >= 360) angoloSole = 0;
+ 
 
  
 //nuvola

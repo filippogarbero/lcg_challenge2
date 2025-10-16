@@ -19,6 +19,9 @@ let ySole = 100;
 let raggiSole = 50;
 let angoloSole = 0; // rotazione raggi
 
+let tempo = 0;
+let scalaDibase = 0.5;
+
 
 
 
@@ -26,6 +29,7 @@ function setup() {
   createCanvas(400, 700);
   angleMode(DEGREES); // lavora in gradi per semplicità
 }
+
 
 function draw() {
   background("#7ebff5ff");
@@ -38,17 +42,25 @@ function draw() {
 
   //aprire contesto di disegno
 
- // SOLE 🌞
+ // sole
   push();
   translate(xSole, ySole); // sposta l'origine al centro del sole
   noStroke();
   fill("#ffea00"); // giallo sole
   ellipse(0, 0, 90, 90); // disegna il cerchio al centro
 
-  // raggi del sole rotanti
+  // raggi del sole rotanti e sclalanti
+
+  
+  
+  
   stroke("#ffa200ff");
-  strokeWeight(4);
+  strokeWeight(5);
   rotate(angoloSole); // ruota il sistema di coordinate
+  scale(scalaDibase); // ingrandisce i raggi
+  tempo += 1; // velocità pulsazione
+  scalaDibase = 1.5 + sin(tempo) * 0.5; // scala che varia nel tempo
+  // disegna i raggi
   for (let i = 0; i < 12; i++) {
     let angle = 360 / 12 * i;
     let x1 = cos(angle) * raggiSole;
@@ -83,9 +95,9 @@ ellipse(xnuvola +280, ynuvola+130, 80, 80);
 ellipse(xnuvola +275, ynuvola+90, 80, 80);
 
 
-//xrocket = (xrocket +1) % xMax;
+
 xnuvola = xnuvola + 1;
-// quando la yrocket sarà oltre una certa soglia allora dobbiamo resettare la y del razzo
+// quando la ynuvola sarà oltre una certa soglia allora dobbiamo resettare la y del razzo
 let soglia = +xMax * 0.6;
 if(xnuvola > soglia){
   xnuvola = -xMax
